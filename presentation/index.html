@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Possible Futures - Visual Presentation</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Sora:wght@400;600;700&display=swap");
+
+      :root {
+        --bg-1: #070b17;
+        --bg-2: #0e1730;
+        --ink: #f7fbff;
+        --muted: #b2c6e7;
+        --accent: #75d7ff;
+        --stroke: rgba(184, 227, 255, 0.24);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        overflow: hidden;
+        background: linear-gradient(130deg, var(--bg-1), var(--bg-2));
+        color: var(--ink);
+      }
+
+      body {
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      .deck {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+      }
+
+      .track {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        transition: transform 680ms cubic-bezier(0.18, 0.92, 0.22, 0.99);
+      }
+
+      .slide {
+        position: relative;
+        min-width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .slide::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        background: radial-gradient(circle at 82% 10%, rgba(101, 170, 255, 0.15), transparent 35%),
+          linear-gradient(to top, rgba(3, 6, 14, 0.74), rgba(3, 6, 14, 0.1) 55%);
+        pointer-events: none;
+      }
+
+      .image-box {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transform: scale(1.02);
+        transition: opacity 520ms ease, transform 820ms ease;
+      }
+
+      .image-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .panel {
+        position: absolute;
+        left: clamp(0.8rem, 2.4vw, 2rem);
+        bottom: clamp(0.8rem, 2.6vh, 2rem);
+        z-index: 3;
+        width: min(46ch, 54vw);
+        border: 1px solid var(--stroke);
+        background: linear-gradient(140deg, rgba(10, 17, 38, 0.62), rgba(8, 14, 31, 0.48));
+        backdrop-filter: blur(8px);
+        padding: clamp(0.8rem, 1.4vw, 1.2rem);
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 460ms ease, transform 620ms cubic-bezier(0.18, 0.92, 0.22, 0.99);
+      }
+
+      .slide.active .image-box,
+      .slide.active .panel {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      .kicker {
+        display: inline-flex;
+        font-size: clamp(0.76rem, 0.95vw, 0.9rem);
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin: 0 0 0.35rem;
+      }
+
+      .slide h1,
+      .slide h2 {
+        margin: 0 0 0.35rem;
+        line-height: 1.06;
+        letter-spacing: 0.01em;
+        font-family: "Sora", sans-serif;
+      }
+
+      .slide h1 {
+        font-size: clamp(2.2rem, 5.2vw, 4.2rem);
+      }
+
+      .slide h2 {
+        font-size: clamp(1.2rem, 2.5vw, 2rem);
+      }
+
+      .caption {
+        margin: 0;
+        font-size: clamp(0.95rem, 1.28vw, 1.12rem);
+        color: var(--muted);
+        line-height: 1.4;
+      }
+
+      .progress-wrap {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.1);
+        z-index: 30;
+      }
+
+      .progress {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #58d6ff, #ffbe63);
+        transition: width 420ms ease;
+      }
+
+      .hud {
+        position: fixed;
+        right: 1rem;
+        top: 1rem;
+        z-index: 31;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .counter {
+        font-size: 0.96rem;
+        letter-spacing: 0.08em;
+        color: #cee6ff;
+        background: rgba(10, 16, 34, 0.72);
+        border: 1px solid var(--stroke);
+        padding: 0.42rem 0.68rem;
+      }
+
+      .controls {
+        display: inline-flex;
+        gap: 0.45rem;
+      }
+
+      .controls button {
+        border: 1px solid var(--stroke);
+        background: rgba(10, 16, 34, 0.72);
+        color: #d2e8ff;
+        width: 2.2rem;
+        height: 2.2rem;
+        cursor: pointer;
+        font-size: 1.1rem;
+      }
+
+      @media (max-width: 940px) {
+        .panel {
+          width: min(92vw, 42ch);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="deck">
+      <div class="track" id="track">
+        <section class="slide active">
+          <div class="image-box">
+            <img src="../output/imagegen/01-future-overview.png" alt="Future civilization panorama" />
+          </div>
+          <div class="panel">
+            <p class="kicker">Future Systems Briefing</p>
+            <h1>Possible Futures</h1>
+            <p class="caption">A visual sprint from compute abundance to virtual universes.</p>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="image-box">
+            <img src="../output/imagegen/02-massive-compute.png" alt="Planet scale compute infrastructure" />
+          </div>
+          <div class="panel">
+            <p class="kicker">Compute</p>
+            <h2>Massive Compute</h2>
+            <p class="caption">Cheaper compute gives small teams super-lab capability.</p>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="image-box">
+            <img src="../output/imagegen/09-robots.png" alt="Near-future robots dominating a production floor" />
+          </div>
+          <div class="panel">
+            <p class="kicker">Automation</p>
+            <h2>Robots Go Mainstream</h2>
+            <p class="caption">General-purpose robots become visible workers across real environments.</p>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="image-box">
+            <img src="../output/imagegen/03-longevity.png" alt="Futuristic longevity clinic" />
+          </div>
+          <div class="panel">
+            <p class="kicker">Longevity</p>
+            <h2>Healthy Lifespan Engineering</h2>
+            <p class="caption">Repair-focused medicine extends healthy years, not just lifespan.</p>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="image-box">
+            <img src="../output/imagegen/04-nanotechnology.png" alt="Nanotechnology assembly visualization" />
+          </div>
+          <div class="panel">
+            <p class="kicker">Nanotechnology</p>
+            <h2>Atomic Precision Manufacturing</h2>
+            <p class="caption">Molecular control unlocks new materials and lower waste.</p>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="image-box">
+            <img src="../output/imagegen/05-starshot.png" alt="Project Starshot laser propulsion concept" />
+          </div>
+          <div class="panel">
+            <p class="kicker">Starshot</p>
+            <h2>Energy-Beamed Propulsion</h2>
+            <p class="caption">Laser arrays could accelerate ultralight sails toward nearby stars.</p>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="image-box">
+            <img src="../output/imagegen/06-oneill-cylinder.png" alt="O'Neill cylinder habitat interior" />
+          </div>
+          <div class="panel">
+            <p class="kicker">Space Habitats</p>
+            <h2>O'Neill Cylinders</h2>
+            <p class="caption">Rotating habitats could support Earth-like living at orbital scale.</p>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="image-box">
+            <img src="../output/imagegen/07-information-compression.png" alt="Information compression concept art" />
+          </div>
+          <div class="panel">
+            <p class="kicker">Information</p>
+            <h2>Compression As Intelligence</h2>
+            <p class="caption">Compression is not just storage, it is prediction power.</p>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="image-box">
+            <img src="../output/imagegen/08-virtual-universes.png" alt="Nested virtual universes concept" />
+          </div>
+          <div class="panel">
+            <p class="kicker">Simulation</p>
+            <h2>Virtual Universes</h2>
+            <p class="caption">Abundant compute turns possibility space into a new frontier.</p>
+          </div>
+        </section>
+
+        <section class="slide">
+          <div class="image-box">
+            <img src="../output/imagegen/01-future-overview.png" alt="Future horizon panorama closing slide" />
+          </div>
+          <div class="panel">
+            <p class="kicker">Closing</p>
+            <h2>Where To Build</h2>
+            <p class="caption">The biggest opportunities sit where AI, biotech, robotics, and space overlap.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <div class="hud">
+      <span class="counter" id="counter">1 / 10</span>
+      <div class="controls">
+        <button id="prev" aria-label="Previous slide">&larr;</button>
+        <button id="next" aria-label="Next slide">&rarr;</button>
+      </div>
+    </div>
+    <div class="progress-wrap"><div class="progress" id="progress"></div></div>
+
+    <script>
+      const track = document.getElementById("track");
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const counter = document.getElementById("counter");
+      const progress = document.getElementById("progress");
+      const prevButton = document.getElementById("prev");
+      const nextButton = document.getElementById("next");
+      let index = 0;
+      let touchStartX = 0;
+
+      function updateDeck(nextIndex) {
+        const max = slides.length - 1;
+        index = Math.max(0, Math.min(max, nextIndex));
+        track.style.transform = `translateX(-${index * 100}vw)`;
+        slides.forEach((slide, i) => slide.classList.toggle("active", i === index));
+        counter.textContent = `${index + 1} / ${slides.length}`;
+        progress.style.width = `${((index + 1) / slides.length) * 100}%`;
+      }
+
+      function goNext() {
+        updateDeck(index + 1);
+      }
+
+      function goPrev() {
+        updateDeck(index - 1);
+      }
+
+      nextButton.addEventListener("click", goNext);
+      prevButton.addEventListener("click", goPrev);
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowRight" || event.key === "PageDown" || event.key === " ") {
+          event.preventDefault();
+          goNext();
+        }
+        if (event.key === "ArrowLeft" || event.key === "PageUp") {
+          event.preventDefault();
+          goPrev();
+        }
+      });
+
+      document.addEventListener(
+        "wheel",
+        (event) => {
+          if (Math.abs(event.deltaX) > Math.abs(event.deltaY)) {
+            if (event.deltaX > 14) goNext();
+            if (event.deltaX < -14) goPrev();
+            return;
+          }
+          if (event.deltaY > 22) goNext();
+          if (event.deltaY < -22) goPrev();
+        },
+        { passive: true }
+      );
+
+      document.addEventListener(
+        "touchstart",
+        (event) => {
+          touchStartX = event.changedTouches[0].clientX;
+        },
+        { passive: true }
+      );
+
+      document.addEventListener(
+        "touchend",
+        (event) => {
+          const diff = event.changedTouches[0].clientX - touchStartX;
+          if (diff > 55) goPrev();
+          if (diff < -55) goNext();
+        },
+        { passive: true }
+      );
+
+      updateDeck(0);
+    </script>
+  </body>
+</html>
