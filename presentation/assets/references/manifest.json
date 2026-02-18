@@ -1,0 +1,62 @@
+[
+  {
+    "key": "profiles_of_the_future",
+    "file": "presentation/assets/references/profiles_of_the_future.jpg",
+    "cover_url": "https://covers.openlibrary.org/b/id/380579-L.jpg",
+    "label": "Arthur C. Clarke",
+    "title": "Profiles of the Future",
+    "author": "Arthur C. Clarke",
+    "openlibrary_work": "/works/OL17414W",
+    "first_publish_year": 1962
+  },
+  {
+    "key": "the_high_frontier",
+    "file": "presentation/assets/references/the_high_frontier.jpg",
+    "cover_url": "https://covers.openlibrary.org/b/id/4656574-L.jpg",
+    "label": "Gerard K. O'Neill",
+    "title": "The High Frontier",
+    "author": "Gerard K. O'Neill",
+    "openlibrary_work": "/works/OL4944240W",
+    "first_publish_year": 1976
+  },
+  {
+    "key": "shape_of_things_to_come",
+    "file": "presentation/assets/references/shape_of_things_to_come.jpg",
+    "cover_url": "https://covers.openlibrary.org/b/id/1412560-L.jpg",
+    "label": "H. G. Wells",
+    "title": "The Shape of Things to Come",
+    "author": "H. G. Wells",
+    "openlibrary_work": "/works/OL52246W",
+    "first_publish_year": 1933
+  },
+  {
+    "key": "making_of_star_trek",
+    "file": "presentation/assets/references/making_of_star_trek.jpg",
+    "cover_url": "https://covers.openlibrary.org/b/id/207356-L.jpg",
+    "label": "Star Trek (1968)",
+    "title": "The Making of Star Trek",
+    "author": "Stephen E. Whitfield",
+    "openlibrary_work": "/works/OL7300660W",
+    "first_publish_year": 1968
+  },
+  {
+    "key": "future_shock",
+    "file": "presentation/assets/references/future_shock.jpg",
+    "cover_url": "https://covers.openlibrary.org/b/id/368968-L.jpg",
+    "label": "Alvin Toffler",
+    "title": "Future Shock",
+    "author": "Alvin Toffler",
+    "openlibrary_work": "/works/OL2869043W",
+    "first_publish_year": 1801
+  },
+  {
+    "key": "operating_manual_spaceship_earth",
+    "file": "presentation/assets/references/operating_manual_spaceship_earth.jpg",
+    "cover_url": "https://covers.openlibrary.org/b/id/689663-L.jpg",
+    "label": "Buckminster Fuller",
+    "title": "Operating Manual for Spaceship Earth",
+    "author": "R. Buckminster Fuller",
+    "openlibrary_work": "/works/OL4109899W",
+    "first_publish_year": 1969
+  }
+]

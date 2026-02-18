@@ -77,6 +77,49 @@
         object-fit: cover;
       }
 
+      .reference-slide .image-box {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        background: #070c17;
+        overflow: hidden;
+      }
+
+      .reference-slide .image-box::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, rgba(4, 8, 20, 0.68), rgba(6, 12, 28, 0.9)),
+          repeating-linear-gradient(
+            0deg,
+            rgba(208, 219, 236, 0.5) 0 2px,
+            rgba(0, 0, 0, 0) 2px 34px
+          ),
+          repeating-linear-gradient(
+            90deg,
+            rgba(208, 219, 236, 0.46) 0 2px,
+            rgba(0, 0, 0, 0) 2px 34px
+          ),
+          radial-gradient(circle at 52% 35%, rgba(102, 137, 199, 0.34), rgba(8, 14, 30, 0.95) 70%);
+        z-index: 0;
+      }
+
+      .reference-slide::before {
+        background: linear-gradient(to top, rgba(2, 4, 10, 0.3), rgba(2, 4, 10, 0.06) 55%);
+      }
+
+      .reference-slide .image-box img {
+        position: relative;
+        z-index: 1;
+        width: auto;
+        height: min(82vh, calc(100% - 5.2rem));
+        max-width: min(90vw, 640px);
+        object-fit: contain;
+        filter: drop-shadow(0 24px 46px rgba(0, 0, 0, 0.65));
+        border: 1px solid rgba(167, 204, 244, 0.4);
+      }
+
       .panel {
         position: absolute;
         left: clamp(0.8rem, 2.4vw, 2rem);
@@ -202,6 +245,77 @@
           </div>
         </section>
 
+        <section class="slide reference-slide">
+          <div class="image-box">
+            <img src="./assets/references/profiles_of_the_future.jpg" alt="Profiles of the Future cover" />
+          </div>
+          <div class="panel">
+            <p class="kicker">Futurism Roots</p>
+            <h2>Arthur C. Clarke</h2>
+            <p class="caption">Profiles of the Future (1962)</p>
+          </div>
+        </section>
+
+        <section class="slide reference-slide">
+          <div class="image-box">
+            <img src="./assets/references/the_high_frontier.jpg" alt="The High Frontier cover" />
+          </div>
+          <div class="panel">
+            <p class="kicker">Futurism Roots</p>
+            <h2>Gerard K. O'Neill</h2>
+            <p class="caption">The High Frontier (1976)</p>
+          </div>
+        </section>
+
+        <section class="slide reference-slide">
+          <div class="image-box">
+            <img src="./assets/references/shape_of_things_to_come.jpg" alt="Things to Come 1936 movie poster" />
+          </div>
+          <div class="panel">
+            <p class="kicker">Futurism Roots</p>
+            <h2>H. G. Wells</h2>
+            <p class="caption">Things to Come (1936 film poster)</p>
+          </div>
+        </section>
+
+        <section class="slide reference-slide">
+          <div class="image-box">
+            <img src="./assets/references/star_trek_reference.jpg" alt="Star Trek 1 novel cover" />
+          </div>
+          <div class="panel">
+            <p class="kicker">Futurism Roots</p>
+            <h2>Star Trek</h2>
+            <p class="caption">Star Trek 1 novel adaptation by James Blish (1967)</p>
+          </div>
+        </section>
+
+        <section class="slide reference-slide">
+          <div class="image-box">
+            <img src="./assets/references/future_shock.jpg" alt="Future Shock cover" />
+          </div>
+          <div class="panel">
+            <p class="kicker">Futurism Roots</p>
+            <h2>Alvin Toffler</h2>
+            <p class="caption">Future Shock (1970)</p>
+          </div>
+        </section>
+
+        <section class="slide reference-slide">
+          <div class="image-box">
+            <img
+              src="./assets/references/operating_manual_spaceship_earth.jpg"
+              alt="Operating Manual for Spaceship Earth cover"
+            />
+          </div>
+          <div class="panel">
+            <p class="kicker">Futurism Roots</p>
+            <h2>Buckminster Fuller</h2>
+            <p class="caption">Operating Manual for Spaceship Earth (1969)</p>
+          </div>
+        </section>
+
+        
+
         <section class="slide">
           <div class="image-box">
             <img src="../output/imagegen/02-massive-compute.png" alt="Planet scale compute infrastructure" />
@@ -304,7 +418,7 @@
     </main>
 
     <div class="hud">
-      <span class="counter" id="counter">1 / 10</span>
+      <span class="counter" id="counter">1 / 16</span>
       <div class="controls">
         <button id="prev" aria-label="Previous slide">&larr;</button>
         <button id="next" aria-label="Next slide">&rarr;</button>
